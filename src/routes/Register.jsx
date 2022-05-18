@@ -1,32 +1,32 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../context/UserProvider";
-import { useNavigate, useNavigationType } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { UserContext } from '../context/UserProvider'
 
-const Login = () => {
+const Register = () => {
 
-  const [email, setEmail] = useState('MarksmanArty@test.com');
+  const [email, setEmail] = useState('MarksmanArty@test.com')
   const [password, setPassword] = useState('123123');
 
-  const { loginUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const { registerUser } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Procesando Form: ', email, password);
     try {
-      await loginUser(email, password);
-      console.log('Usuario Logueado!');
+      await registerUser(email, password);
+      console.log('Usuario Creado!');
       navigate("/");
     } catch (error) {
       console.log(error.code);
+      alert('Este email ya esta registrado');
     } 
   }
-  
-  
 
   return (
     <>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <input 
           type="email" 
@@ -41,10 +41,10 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" >Login</button>
+        <button type="submit" >Enviar</button>
       </form>
     </>
   );
 };
 
-export default Login;
+export default Register;
