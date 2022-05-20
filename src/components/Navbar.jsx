@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <button onClick={handleClickLogout}>Logout</button>
+      {/* <button onClick={handleClickLogout}>Logout</button> */}
       {user ? ( 
         <>
           <NavLink to="/">Inicio</NavLink>           
