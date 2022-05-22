@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import RequireAuth from './components/RequireAuth';
 import { useContext } from 'react';
 import { UserContext } from './context/UserProvider';
+import LayoutContainerForm from './components/LayoutContainerForm';
 
 
 const App = () => {
@@ -28,8 +29,12 @@ const App = () => {
             <Home />
           </RequireAuth>
         }/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/register' element={<Register />}/>
+        {/* de esta manera ambos elementos comparten el mismo layout
+        tanto Login, como Register */}
+        <Route path="/" element={<LayoutContainerForm />}>
+          <Route path='/login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
+        </Route>
       </Routes>
     </>
   );

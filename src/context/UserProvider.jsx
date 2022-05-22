@@ -13,7 +13,7 @@ const UserProvider = (props) => {
       console.log(user);
       if (user) {
         setTimeout(() => {
-          console.log("esperando");
+          // console.log("esperando");
           const {email, photoURL, uid, displayName} = user
           setUser({email: email, photoURL: photoURL, uid, displayName});
         }, 0);

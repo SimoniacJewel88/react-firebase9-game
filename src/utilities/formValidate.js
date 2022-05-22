@@ -24,9 +24,9 @@ const formValidate = (getValues) => {
         return true; // si regresa true, la validacion pasó 
       }
     },
-    validateEquals(getValues) {
+    validateEquals(value) {
       return {
-        equals: v => v=== getValues("password") || // En este caso v representa el 
+        equals: (v) => v=== value || // En este caso v representa el 
         'No coinciden las contraseñas',            // valor actual del input, (respassword)
       }
     }

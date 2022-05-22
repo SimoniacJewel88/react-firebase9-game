@@ -20,7 +20,8 @@ const Navbar = () => {
       {/* <button onClick={handleClickLogout}>Logout</button> */}
       {user ? ( 
         <>
-          <NavLink to="/">Inicio</NavLink>           
+          <NavLink to="/">Inicio</NavLink> 
+          <button onClick={handleClickLogout}>Logout</button>
         </>
       ) : (
         <>
