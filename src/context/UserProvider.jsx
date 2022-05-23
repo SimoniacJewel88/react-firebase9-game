@@ -1,22 +1,28 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { 
+  createUserWithEmailAndPassword, 
+  onAuthStateChanged, 
+  signInWithEmailAndPassword, 
+  signOut 
+} from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
 
 const UserContext = createContext();
 
-const UserProvider = (props) => {
-
-  const [user, setUser] = useState(false)
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
-    const onsuscribe = onAuthStateChanged(auth, user => {
-      console.log(user);
+    const unsuscribe = onAuthStateChanged(auth, (user) => {
+      // console.log(user);
       if (user) {
-        setTimeout(() => {
-          // console.log("esperando");
-          const {email, photoURL, uid, displayName} = user
-          setUser({email: email, photoURL: photoURL, uid, displayName});
-        }, 0);
+        const {email, photoURL, uid, displayName} = user;
+        setUser({email: email, photoURL: photoURL, uid, displayName});
+        // setTimeout(() => {
+        //   // console.log("esperando");
+        //   const {email, photoURL, uid, displayName} = user
+        //   setUser({email: email, photoURL: photoURL, uid, displayName});
+        // }, 0);
         
       } else {
         setUser(null);
@@ -24,7 +30,7 @@ const UserProvider = (props) => {
     });
   
     return () => {
-      onsuscribe();
+      unsuscribe();
     }
   }, [])
   
@@ -37,7 +43,7 @@ const UserProvider = (props) => {
 
   return (
     <UserContext.Provider value={{user, setUser, registerUser, loginUser, signOutUser}}>
-      {props.children}      
+      {children}      
     </UserContext.Provider>
   );
 };

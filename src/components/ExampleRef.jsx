@@ -12,7 +12,7 @@ const InputText = forwardRef((props, ref) => {
   )
 });
 
-const ExampleRes = () => {
+const ExampleRef = () => {
 
   const inputFocus = useRef(null);
 
@@ -37,4 +37,4 @@ const ExampleRes = () => {
   );
 };
 
-export default ExampleRes;
+export default ExampleRef;
