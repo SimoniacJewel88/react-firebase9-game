@@ -1,7 +1,7 @@
 /** Regresa un objeto con las opciones de validaciones
  * de react-hook-form
  */
-const formValidate = (getValues) => {
+const formValidate = () => {
   return {
     required: {
       value: true,
@@ -10,6 +10,10 @@ const formValidate = (getValues) => {
     patternEmail: {
       value: /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/,
       message: "Formato de email incorrecto"
+    },
+    patternUrl: {
+      value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+      message: "Formato de url incorrecto"
     },
     minLength: {
       value: 6, 

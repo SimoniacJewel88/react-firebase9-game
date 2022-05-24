@@ -10,8 +10,8 @@ import Perfil from './routes/Perfil';
 import Navbar from './components/Navbar';
 import LayoutRequireAuth from './components/Layouts/LayoutRequireAuth';
 import LayoutContainerForm from './components/Layouts/LayoutContainerForm';
+import LayoutRedirect from './components/Layouts/LayoutRedirect';
 import NotFound from './routes/NotFound';
-
 
 const App = () => {
 
@@ -40,8 +40,11 @@ const App = () => {
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
         </Route>
-
-        <Route path="*" element={<NotFound />}>
+        
+        <Route path='/:nanoid' element={<LayoutRedirect />}>
+          <Route index path="*" element={<NotFound />}>
+          
+        </Route>
 
         </Route>
       </Routes>
